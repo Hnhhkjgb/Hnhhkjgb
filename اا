@@ -1,0 +1,22 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# تحديد متصفح الويب (يمكنك استخدام Chrome أو Firefox أو غيره)
+driver = webdriver.Chrome()
+
+# افتح الموقع
+driver.get("https://github.com)
+
+# انتظر حتى تحميل الصفحة بالكامل
+wait = WebDriverWait(driver, 10)
+wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+
+# قم بتغيير لون خلفية الصفحة إلى الأخضر
+driver.execute_script("document.body.style.backgroundColor = 'green'")
+
+# انتظر لبضع ثواني لترى التغييرات
+driver.implicitly_wait(5)
+
+# اغلق المتصفح
